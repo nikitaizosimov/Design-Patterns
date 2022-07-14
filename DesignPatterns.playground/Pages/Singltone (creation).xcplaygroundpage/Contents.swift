@@ -23,33 +23,12 @@ class Singleton {
     
     private var colors = [String]()
     
-    private init() {}
+    private init() { }
     
     func writeToDB(colors: [String]) { self.colors = colors }
     
     func readFromDB() -> [String] { colors }
 }
-
-//class Client {
-//
-//    static func someClientCode() {
-//        let nickInstance = Singleton.shared
-//        let mikeInstance = Singleton.shared
-//
-//        nickInstance.writeToDB(colors: ["red", "white"])
-//        mikeInstance.writeToDB(colors: ["green", "black"])
-//
-//
-////        let instance1 = Singleton.shared
-////        let instance2 = Singleton.shared
-////
-////        if (instance1 === instance2) {
-////            print("Singleton works, both variables contain the same instance.")
-////        } else {
-////            print("Singleton failed, variables contain different instances.")
-////        }
-//    }
-//}
 
 class Tests: XCTestCase {
     
@@ -65,7 +44,7 @@ class Tests: XCTestCase {
     
     func test0() {
         let instance = makeClientCode()
-        XCTAssertEqual(instance.nick === instance.mike, true)
+        XCTAssert(instance.nick === instance.mike)
     }
     
     func test1() {

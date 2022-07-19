@@ -3,6 +3,7 @@
     <pages>
         <page name='Singltone (creation)'/>
         <page name='Prototype (creation)'/>
-        <page name='Factory Method (creation'/>
+        <page name='Factory Method (creation)'/>
+        <page name='Builder (creation)'/>
     </pages>
 </playground>

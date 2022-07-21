@@ -12,11 +12,13 @@ import XCTest
  */
 
 protocol ThemeProtocol: AnyObject {
+    
     var backgroundColor: UIColor { get }
     var textColor: UIColor { get }
 }
 
 class Theme: ThemeProtocol {
+    
     var backgroundColor: UIColor
     var textColor: UIColor
     
@@ -27,6 +29,7 @@ class Theme: ThemeProtocol {
 }
 
 protocol ThemeBuilderProtocol: AnyObject {
+    
     func setBackground(color: UIColor)
     func setText(color: UIColor)
     
@@ -34,6 +37,7 @@ protocol ThemeBuilderProtocol: AnyObject {
 }
 
 class ThemeBuilder: ThemeBuilderProtocol {
+    
     private var backgroundColor: UIColor?
     private var textColor: UIColor?
     

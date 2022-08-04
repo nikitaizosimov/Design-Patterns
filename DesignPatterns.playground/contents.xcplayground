@@ -6,5 +6,6 @@
         <page name='Factory Method (creation)'/>
         <page name='Builder (creation)'/>
         <page name='Observer (behavioral)'/>
+        <page name='Adapter (structural)'/>
     </pages>
 </playground>

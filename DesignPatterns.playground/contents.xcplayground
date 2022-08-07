@@ -7,5 +7,6 @@
         <page name='Builder (creation)'/>
         <page name='Observer (behavioral)'/>
         <page name='Adapter (structural)'/>
+        <page name='Chain of Responsibility (behavioral)'/>
     </pages>
 </playground>

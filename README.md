@@ -10,3 +10,8 @@
 ## Behavioral
 
 - Observer
+- Chain of Responsibility
+
+## Structural
+
+- Adapter

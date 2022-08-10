@@ -9,13 +9,13 @@ import XCTest
  
  Паттерн можно часто встретить в Swift-коде, особенно там, где требуется конвертация разных типов данных или совместная работа классов с разными интерфейсами.
  
- Чаще всего используется для third patry зависимостей и сложных типов данных, где extension будет нехватать.
+ Чаще всего используется для third patry зависимостей и сложных типов данных, где extension будет неуместным.
  */
 
-enum RussianFraht {
+enum Fraht {
     
-    static let customsСlearanceForPowerHorse = 3_000
-    static let sosButton = 40_000
+    static let customsPowerHorse = 3_000
+    static let sosSystem = 40_000
     static let scrapСollection = 35_000
 }
 
@@ -24,7 +24,7 @@ protocol CarCost {
     func calculateCarCost() -> Int
 }
 
-struct DomesticCar {
+struct DomesticCar: CarCost {
     
     let price: Int
     
@@ -32,8 +32,6 @@ struct DomesticCar {
         return price
     }
 }
-
-extension DomesticCar: CarCost { }
 
 struct JapanCar {
     
@@ -46,26 +44,9 @@ struct JapanCar {
     var rawCost: Int {
         var summury = 0
         
-        summury += powerHorse * RussianFraht.customsСlearanceForPowerHorse
+        summury += powerHorse * Fraht.customsPowerHorse
         summury += dealerFee + fixHeadlightsFromRhdToLhd
-        summury += RussianFraht.sosButton + RussianFraht.scrapСollection
-        summury += price + deliveryCost
-        
-        return summury
-    }
-}
-
-struct KoreanCar {
-    
-    let price: Int
-    let powerHorse: Int
-    let deliveryCost: Int
-    
-    var rawCost: Int {
-        var summury = 0
-        
-        summury += powerHorse * RussianFraht.customsСlearanceForPowerHorse
-        summury += RussianFraht.sosButton + RussianFraht.scrapСollection
+        summury += Fraht.sosSystem + Fraht.scrapСollection
         summury += price + deliveryCost
         
         return summury
@@ -74,7 +55,7 @@ struct KoreanCar {
 
 class JapanCarCarCostAdapater: CarCost {
     
-    static let profit = 80_000
+    static let forceMajeure = 80_000
     
     let japanCar: JapanCar
     
@@ -82,21 +63,7 @@ class JapanCarCarCostAdapater: CarCost {
         self.japanCar = japanCar
     }
     func calculateCarCost() -> Int {
-        return japanCar.rawCost + Self.profit
-    }
-}
-
-class KoreanCarCarCostAdapater: CarCost {
-    
-    static let profit = 120_000
-    
-    let koreanCar: KoreanCar
-    
-    init(koreanCar: KoreanCar) {
-        self.koreanCar = koreanCar
-    }
-    func calculateCarCost() -> Int {
-        return koreanCar.rawCost + Self.profit
+        return japanCar.rawCost + Self.forceMajeure
     }
 }
 
@@ -112,14 +79,7 @@ final class Tests: XCTestCase {
                  deliveryCost: 50_000)
     }()
     
-    let kiaK5: KoreanCar = {
-        KoreanCar(price: 500_500,
-                  powerHorse: 150,
-                  deliveryCost: 20_000)
-    }()
-    
     lazy var toyotaCamryAdapter: JapanCarCarCostAdapater = { JapanCarCarCostAdapater(japanCar: toyotaCamry) }()
-    lazy var kiaK5Adapter: KoreanCarCarCostAdapater = { KoreanCarCarCostAdapater(koreanCar: kiaK5) }()
 
     func test0() {
         let value = ladaNiva.calculateCarCost()
@@ -129,11 +89,6 @@ final class Tests: XCTestCase {
     func test1() {
         let value = toyotaCamryAdapter.calculateCarCost()
         XCTAssertEqual(value, 1205000)
-    }
-    
-    func test2() {
-        let value = kiaK5Adapter.calculateCarCost()
-        XCTAssertEqual(value, 1165500)
     }
 }
 

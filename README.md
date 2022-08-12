@@ -2,10 +2,10 @@
 
 ## Creation
 
-- Singltone (creation)
-- Prototype (creation)
-- Factory Method (creation)
-- Builder (creation)
+- Singltone
+- Prototype
+- Factory Method
+- Builder
 
 ## Behavioral
 
@@ -15,3 +15,4 @@
 ## Structural
 
 - Adapter
+- Decorator
